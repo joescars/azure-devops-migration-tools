@@ -11,6 +11,46 @@ It enables secure, automated migration of:
 
 The migration process validates source and target configurations, applies custom WIQL queries to filter specific work items, and maintains data integrity throughout the migration process. All sensitive information like Personal Access Tokens are managed securely through environment variables.
 
+## Requirements
+
+### System Requirements
+
+- **Operating System**: Windows 10, Windows 11, or Windows Server
+- **.NET Runtime**: .NET 8 Runtime (x64) or higher
+- **PowerShell**: PowerShell 7 or higher (required for running configuration scripts)
+- **Network Access**: Network connectivity to source and target Azure DevOps organizations/collections
+- **Permissions**: Appropriate permissions and Personal Access Tokens (PATs) for Azure DevOps instances
+
+### PowerShell Execution Policy
+
+The configuration scripts in this repository must be run in PowerShell on Windows. If you encounter script execution errors, you may need to adjust your PowerShell execution policy:
+
+```powershell
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+### Installation Methods
+
+The Azure DevOps Migration Tools can be installed using one of the following methods:
+
+1. **Winget** (Recommended for Windows 10/11):
+   ```powershell
+   winget install nkdAgility.AzureDevOpsMigrationTools
+   ```
+   Note: Do not run as Administrator.
+
+2. **Chocolatey** (Recommended for Windows Server):
+   ```powershell
+   choco install vsts-sync-migrator
+   ```
+
+3. **Manual Installation**:
+   - Download the latest release from [devopsmigration.io/download/](https://devopsmigration.io/download/)
+   - Unblock the ZIP file (right-click → Properties → Unblock)
+   - Extract to your desired location and run `devopsmigration.exe`
+
+For more information, see the [official installation documentation](https://devopsmigration.io/docs/setup/installation/).
+
 ### Environment Variables and Configuration Scripts
 
 Instead of hardcoding sensitive values like Personal Access Tokens directly in the configuration.json file, this project supports using environment variables and provides helper scripts to manage them securely.
